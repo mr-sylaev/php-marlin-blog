@@ -1,16 +1,12 @@
 <?php
-    $data = [
-        [
-            'id' => 1,
-            'name' => 'rasyl',
-            'email' => 'mr.sylaev@mail.ru'
-        ],
-        [
-            'id' => 2,
-            'name' => 'maxim',
-            'email' => 'mr.maxim@mail.ru'
-        ]
-    ];
+    try {
+        $db = new PDO('mysql:host=localhost;dbname=php-marlin-blog;charset=utf8', 'root', '');
+    } catch (PDOException $e) {
+        print "Error!: " . $e->getMessage();
+        die();
+    }
+
+    $data = $db->query("SELECT * FROM `users`");
 ?>
 
 
@@ -40,17 +36,17 @@
 					</thead>
 
 					<tbody>
-                        <?php foreach($data as $user): ?>
+                        <?php while ($user = $data->fetch()) : ?>
                         <tr>
                             <td><?=$user['id'];?></td>
-                            <td><?=$user['name'];?></td>
+                            <td><?=$user['username'];?></td>
                             <td><?=$user['email'];?></td>
                             <td>
                                 <a href="edit.html" class="btn btn-warning">Edit</a>
                                 <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php endwhile; ?>
 					</tbody>
 				</table>
 			</div>
