@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -36,7 +35,7 @@
 					</thead>
 
 					<tbody>
-                        <?php while ($user = $data->fetch()) : ?>
+                        <?php foreach ($data as $user) : ?>
                         <tr>
                             <td><?=$user['id'];?></td>
                             <td><?=$user['username'];?></td>
@@ -46,7 +45,7 @@
                                 <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
 					</tbody>
 				</table>
 			</div>
