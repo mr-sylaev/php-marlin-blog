@@ -1,12 +1,15 @@
 <?php
     try {
-        $db = new PDO('mysql:host=localhost;dbname=php-marlin-blog;charset=utf8', 'root', '');
+        $connection = new PDO('mysql:host=localhost;dbname=php-marlin-blog;charset=utf8', 'root', '');
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage();
         die();
     }
 
-    $data = $db->query("SELECT * FROM `users`");
+    // Отправляю запрос на выборку всех элементов из БД
+    $statement = $connection->query("SELECT * FROM `users`");
+    // Закрываю соединение с БД
+    $statement->connection = null;
 ?>
 
 
@@ -22,7 +25,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1>User management</h1>
-				<a href="create.html" class="btn btn-success">Add User</a>
+				<a href="create.php" class="btn btn-success">Add User</a>
 				
 				<table class="table">
 					<thead>
@@ -35,13 +38,13 @@
 					</thead>
 
 					<tbody>
-                        <?php foreach ($data as $user) : ?>
+                        <?php foreach ($statement as $user) : ?>
                         <tr>
                             <td><?=$user['id'];?></td>
                             <td><?=$user['name'];?></td>
                             <td><?=$user['email'];?></td>
                             <td>
-                                <a href="edit.html" class="btn btn-warning">Edit</a>
+                                <a href="edit.php" class="btn btn-warning">Edit</a>
                                 <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
