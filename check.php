@@ -14,7 +14,7 @@
         $name                = $_POST['name'];
         $email               = $_POST['email'];
         $password            = $_POST['password'];
-        $heshPassword        = md5($password)."c3b2a1";
+        $heshPassword        = md5($password."ras123ras");
         $userPhoto           = $_FILES['photo'];
         $randomNameUserPhoto = mt_rand(74573773, 999193195).$userPhoto['name'];
         $pathUpload          = "uploads/"; // Директория файлов
