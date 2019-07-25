@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 20 2019 г., 19:54
+-- Время создания: Июл 25 2019 г., 22:40
 -- Версия сервера: 5.6.41
--- Версия PHP: 5.6.38
+-- Версия PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,9 +41,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_photo`) VALUES
-(57, 'btr', 'mr.btr@mail.ru', '25d55ad283aa400af464c76d713c07', '635591165VQFBKe.jpg'),
-(56, 'admin', 'mr.admin@mail.ru', '0192023a7bbd73250516f069df18b5', NULL),
-(55, 'rasyl', 'mr.sylaev@mail.ru', '25d55ad283aa400af464c76d713c07', '841465023LHELeZqBRo.jpg');
+(101, 'Test123', 'user777@mail.ru', 'db0a9c91a5f8e5166102b488cf3278', NULL),
+(100, 'mr-sylaev', 'mr.sylaev@mail.ru', 'db0a9c91a5f8e5166102b488cf3278', '988682189EC96vKtqdG.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -63,7 +62,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

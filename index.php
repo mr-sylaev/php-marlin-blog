@@ -12,7 +12,6 @@
     $statement->connection = null;
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +43,7 @@
                             <td><?=$user['name'];?></td>
                             <td><?=$user['email'];?></td>
                             <td>
-                                <a href="edit.php" class="btn btn-warning">Edit</a>
+                                <a href="edit.php<?='/?id='.$user['id']?>" class="btn btn-warning" onclick="">Edit</a>
                                 <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
