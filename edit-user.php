@@ -46,7 +46,9 @@
                 }
 
                 // Получаем название старой фотки пользователя
-                $statement = $connection->query("SELECT user_photo FROM `users` WHERE id = '$id'");
+                $statement = $connection->pprepare("SELECT user_photo FROM `users` WHERE id = :id");
+                $statement->bindParam(":id" ,$id);
+                $statement->execute();
                 $OldUserPhoto = $statement->fetchColumn();
 
                 // Удаляем страую фотку пользователя

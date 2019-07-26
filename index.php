@@ -43,8 +43,8 @@
                             <td><?=$user['name'];?></td>
                             <td><?=$user['email'];?></td>
                             <td>
-                                <a href="edit.php<?='/?id='.$user['id']?>" class="btn btn-warning" onclick="">Edit</a>
-                                <a href="#" onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
+                                <a href="edit-user.php<?='/?id='.$user['id']?>" class="btn btn-warning" onclick="">Edit</a>
+                                <a href="delete-user.php<?='/?id='.$user['id']?>" onclick="return confirm('are you sure?');" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
