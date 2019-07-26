@@ -17,9 +17,13 @@
     $user = $statement->fetch();
 
 
-    // Удаляем фотографию пользователя (если фотка есть) с дериктроии Uploads
+    // Удаляем фотографию пользователя (если фотка есть) из дериктроии Uploads
     if ($user['user_photo'] != null) {
-        unlink($pathUpload.$user['user_photo']);
+        // Если файл находится в директории Uploads
+        if(file_exists($pathUpload.$user['user_photo'])) {
+            echo "Файл существует!";
+            unlink($pathUpload . $user['user_photo']);
+        }
     }
 
     // Отправляю запрос на удаление записей по указанному id из БД
