@@ -51,7 +51,7 @@
                 // Удаляем страую фотку пользователя
                 unlink($pathUpload.$OldUserPhoto);
 
-                // Отправка запраса в БД на добавление новой записи
+                // Отправка запраса в БД на редактирование записи по указанному ID
                 $statement = $connection->query("UPDATE users SET name = '$name', email = '$email', password= '$heshPassword', user_photo = '$randomNameUserPhoto' WHERE id = '$id'");
                 $statement->connection = null;
 
@@ -68,7 +68,7 @@
                     die();
                 }
 
-                // Отправка запраса в БД на добавление новой записи
+                // Отправка запраса в БД на редактирование записи по указанному ID
                 $statement = $connection->query("UPDATE users SET name = '$name', email = '$email', password= '$heshPassword' WHERE id = '$id'");
                 $statement->connection = null;
 

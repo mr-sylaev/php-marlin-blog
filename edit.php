@@ -8,11 +8,12 @@
             die();
         }
 
-        $userID = $_GET['id'];
+        $userID = $_GET['id']; // ID пользователя
 
-        // Отправляю запрос на выборку всех элементов из БД
-        $statement = $connection->query("SELECT * FROM `users` WHERE id=".$userID);
-
+        // Отправляю запрос на выборку значений всех полей по указанному ID из БД
+        $statement = $connection->prepare("SELECT * FROM `users` WHERE id = :userID");
+        $statement->bindParam(":userID" ,$userID);
+        $statement->execute();
         $user = $statement->fetch();
 
         // Закрываю соединение с БД
