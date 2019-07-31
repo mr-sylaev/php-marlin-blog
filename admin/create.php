@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h1>Add User</h1>
-				<form name="add-user" action="check.php" method="POST" enctype="multipart/form-data">
+				<form name="add-user" action="/admin/functions/check.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Username</label>
 						<input type="text" name="name" class="form-control" required>

@@ -41,7 +41,7 @@
                         echo "<h1>User $userID does not exist</h1>";
                     }
                 ?>
-				<form action="../functions/edit-check.php" method="POST" enctype="multipart/form-data">
+				<form action="/admin/functions/edit-user.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?=$user['id']?>">
                     <div class="form-group">
                         <label for="">Username</label>

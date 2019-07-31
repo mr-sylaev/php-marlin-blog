@@ -34,5 +34,5 @@
     // Закрываю соединение с БД
     $statement->connection = null;
 
-    header("Location: /");
+    header("Location: /admin/");
 ?>

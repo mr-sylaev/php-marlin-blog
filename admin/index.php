@@ -25,7 +25,6 @@
 			<div class="col-md-12">
 				<h1>User management</h1>
 				<a href="create.php" class="btn btn-success">Add User</a>
-				
 				<table class="table">
 					<thead>
 						<tr>
@@ -35,7 +34,6 @@
 							<th>Actions</th>
 						</tr>
 					</thead>
-
 					<tbody>
                         <?php foreach ($statement as $user) : ?>
                         <tr>
@@ -44,7 +42,7 @@
                             <td><?=$user['email'];?></td>
                             <td>
                                 <a href="edit.php<?='/?id='.$user['id']?>" class="btn btn-warning" onclick="">Edit</a>
-                                <a href="delete-user.php<?='/?id='.$user['id']?>" onclick="return confirm('are you sure?');" class="btn btn-danger">Delete</a>
+                                <a href="functions/delete-user.php<?='/?id='.$user['id']?>" onclick="return confirm('are you sure?');" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

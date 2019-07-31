@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 26 2019 г., 12:23
+-- Время создания: Июл 31 2019 г., 08:10
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -41,8 +41,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_photo`) VALUES
-(131, 'admin', 'mr.admin@mail.ru', 'db0a9c91a5f8e5166102b488cf3278', '2003105221057675.jpg'),
-(132, 'Test', 'mr.sylaev@mail.ru', '8f2dde649acd81df5c6b22e7cda477', '628697582EC96vKtqdG.jpg');
+(142, 'mr-sylaev', 'mr.sylaev@mail.ru', 'db0a9c91a5f8e5166102b488cf3278', '254134064$_57.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -62,7 +61,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

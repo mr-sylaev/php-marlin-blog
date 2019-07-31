@@ -1,17 +1,15 @@
 <?php
-    $id                  = $_POST['id'];
     $name                = $_POST['name'];
     $email               = $_POST['email'];
     $password            = $_POST['password'];
     $heshPassword        = md5($password."ras123ras");
     $userPhoto           = $_FILES['photo'];
     $randomNameUserPhoto = mt_rand(74573773, 999193195).$userPhoto['name'];
-    $pathUpload          = "uploads/"; // Директория файлов
+    $pathUpload          = "../../uploads/"; // Директория файлов
 
     // Функция Ссылка на изменение значения поля, срабатывает в случае ошибки
     function btnRenameInput () {
-        $id = $GLOBALS["id"];
-        echo "<br><a href="."edit.php/?id=$id".">Исправить ошибку</a>";
+        echo "<br><a href='../create.php'>Исправить ошибку</a>";
     }
 
     // Проверка на валидность имени
@@ -33,11 +31,9 @@
     else {
         // Проверяем метод запроса
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             // Если картинка (файл) загружена
             if (@copy($userPhoto['tmp_name'], $pathUpload . $randomNameUserPhoto)) {
-
-                // Подключаемся к БД
+                // Подключение к БД
                 try {
                     $connection = new PDO('mysql:host=localhost;dbname=php-marlin-blog;charset=utf8', 'root', '');
                 } catch (PDOException $e) {
@@ -45,25 +41,16 @@
                     die();
                 }
 
-                // Получаем название старой фотки пользователя
-                $statement = $connection->pprepare("SELECT user_photo FROM `users` WHERE id = :id");
-                $statement->bindParam(":id" ,$id);
-                $statement->execute();
-                $OldUserPhoto = $statement->fetchColumn();
-
-                // Удаляем страую фотку пользователя
-                unlink($pathUpload.$OldUserPhoto);
-
-                // Отправка запраса в БД на редактирование записи по указанному ID
-                $statement = $connection->query("UPDATE users SET name = '$name', email = '$email', password= '$heshPassword', user_photo = '$randomNameUserPhoto' WHERE id = '$id'");
+                // Отправка запраса в БД на добавление новой записи
+                $statement = $connection->query("INSERT INTO `users` (`name`, `email`, `password`, `user_photo`) VALUES ('$name', '$email','$heshPassword', '$randomNameUserPhoto') ");
                 $statement->connection = null;
 
-                header("Location: /");
+
+                header("Location: /admin/");
             }
             // Если картинка (файл) не загружена
             else {
-
-                // Подключаемся к БД
+                // Подключение к БД
                 try {
                     $connection = new PDO('mysql:host=localhost;dbname=php-marlin-blog;charset=utf8', 'root', '');
                 } catch (PDOException $e) {
@@ -71,11 +58,12 @@
                     die();
                 }
 
-                // Отправка запраса в БД на редактирование записи по указанному ID
-                $statement = $connection->query("UPDATE users SET name = '$name', email = '$email', password= '$heshPassword' WHERE id = '$id'");
+                // Отправка запраса в БД на добавление новой записи
+                $statement = $connection->query("INSERT INTO `users` (`name`, `email`, `password`) VALUES ('$name', '$email','$heshPassword') ");
                 $statement->connection = null;
 
-                header("Location: /");
+
+                header("Location: /admin/");
             }
         }
     }
